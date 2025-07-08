@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib} % For bibliography
+\usepackage{setspace}
+\onehalfspacing % Optional: 1.5 line spacing
+
+\title{Book Recommendation System Based on Cosine Similarity}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{abstract}
+		\input{sections/abstract}
+	\end{abstract}
+	
+	\tableofcontents
+	\newpage
+	
+	\section{Introduction}
+	\input{sections/introduction}
+	
+	\section{Literature Review}
+	\input{sections/literature_review}
+	
+	\section{Data and Feature Engineering}
+	\input{sections/Data_FeatureEngineering}
+	
+	\section{Vector Embedding}
+	\input{sections/Vector_Embedding}
+	
+	\section{Similarity Scoring (Cosine Similarity Matrix)}
+	\input{sections/Similarity_Scoring }
+	
+	\section{Discussion}
+	\input{sections/discussion}
+	
+	\section{Conclusion and Future Work}
+	\input{sections/conclusion}
+	
+	\bibliographystyle{plainnat}
+	\bibliography{references}
+	
+\end{document}
