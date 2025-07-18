@@ -1,0 +1,60 @@
+In the words of Yoshua Bengio: 
+Good input features are essential for successful ML. Feature engineering is close to
+90% of effort in industrial ML.
+
+page 6:
+Features them-selves are not so clear cut, going from raw data to features involves extracting
+features following a featurization process (Section 1.5.2) on a data pipeline.
+This process goes hand in hand with data cleaning and enhancement.
+
+\section{Data and Feature Engineering}
+
+\subsection{Dataset Description}
+
+The dataset used for this study was sourced from \textit{[insert source, e.g., Kaggle, Goodreads API]}, and contains metadata for approximately \textbf{10,000 books}. Each entry includes attributes such as the \textit{book title}, \textit{author name}, \textit{average rating}, \textit{number of ratings}, \textit{user-generated tags}, and a \textit{textual description}.
+
+These diverse fields provide both structured and unstructured information, allowing the construction of a feature-rich content-based recommendation engine. Our system leverages these features to compare and recommend books based on their similarity.
+
+\subsection{Preprocessing and Cleaning}
+
+Before constructing features, the dataset underwent several preprocessing steps to ensure consistency and quality:
+
+\begin{itemize}
+	\item Removal of duplicate or incomplete entries (e.g., books missing descriptions or titles).
+	\item Standardization of textual data by converting all characters to lowercase.
+	\item Elimination of punctuation, digits, and non-ASCII characters.
+	\item Removal of common English stop words (e.g., ``and'', ``the'', ``is'').
+	\item Optional lemmatization or stemming to reduce word variants to their root forms.
+\end{itemize}
+
+Numerical fields such as average rating and number of reviews were normalized to ensure comparability across different scales if used in later analysis.
+
+\subsection{Feature Selection and Construction}
+
+The goal of this step was to define a meaningful and discriminative representation of each book. We selected the following features:
+
+\begin{itemize}
+	\item \textbf{Title}: The official book title, which can carry thematic cues.
+	\item \textbf{Tags}: User-generated tags summarizing book themes (e.g., ``fantasy'', ``science-fiction'').
+	\item \textbf{Description}: A summary or synopsis of the book content.
+\end{itemize}
+
+These three fields were concatenated into a single text document per book, forming a unified textual representation. This aggregated text served as the input for vector embedding in the subsequent step.
+
+\subsection{Feature Representation Overview}
+
+The resulting text document for each book was vectorized using the \textbf{TF-IDF (Term Frequency-Inverse Document Frequency)} method. This representation captures the relative importance of terms in a given document compared to the entire corpus, helping highlight distinctive keywords.
+
+The final result is a sparse vector for each book, which can be used to compute cosine similarity — a measure of textual closeness — between any pair of books. This process is detailed in Section~\ref{Similarity_Scoring}.
+
+% Optional: Insert a small table if you wish
+% \begin{table}[h!]
+	% \centering
+	% \begin{tabular}{|l|l|l|}
+		% \hline
+		% \textbf{Title} & \textbf{Tags} & \textbf{Description (excerpt)} \\ \hline
+		% The Hobbit & fantasy, adventure & ``Bilbo Baggins is a hobbit who enjoys a comfortable life...'' \\ \hline
+		% 1984 & dystopia, politics & ``Winston Smith wrestles with oppression in Oceania...'' \\ \hline
+		% \end{tabular}
+	% \caption{Sample entries from the dataset}
+	% \end{table}
