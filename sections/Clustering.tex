@@ -1,0 +1,42 @@
+\subsection{What is Clustering?}
+\date{}
+
+	
+	\maketitle
+	
+	Suppose you are working with a dataset that includes patient information from a healthcare system. The dataset is complex and includes both categorical and numeric features. You want to find patterns and similarities in the dataset. How might you approach this task?
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{../clustering_example}
+	\caption{}
+	\label{fig:clusteringexample}
+\end{figure}
+	
+	\par Clustering is an \textbf{unsupervised machine learning} technique designed to group unlabeled examples based on their similarity to each other. (If the examples are labeled, this kind of grouping is called \emph{classification}.) Consider a hypothetical patient study designed to evaluate a new treatment protocol. During the study, patients report how many times per week they experience symptoms and the severity of the symptoms. Researchers can use clustering analysis to group patients with similar treatment responses into clusters.The figure demonstrates one possible grouping of simulated data into three clusters.
+	
+\subsection{Types of clustering}
+
+\par There are many different \textbf{clustering} algorithms as there are multiple ways to define a cluster. Different approaches will work well for different types of models depending on the size of the input data, the dimensionality of the data, the rigidity of the categories and the number of clusters within the dataset.
+\subsubsection{Centroid-based clustering}
+
+\par \textbf{Centroid-based clustering } is a method that divides a data set into similar groups based on the distance between their centroids. The \textbf{k-means} clustering algorithm is a commonly used technique, where each data point is assigned to a separate cluster. It assumes that the center of each cluster defines the cluster using a distance measure, typically Euclidean distance. The algorithm initializes the clustering by providing a number of expected clusters, which represents the 'K' in K-means. The optimal k clusters are identified by iteratively minimizing the total distance between each point and its assigned cluster centroid. \textbf{K-means} is a hard clustering approach, working well when clusters are of roughly equivalent size and there are no significant outliers or changes in density across the data. Another approach is K-medoids, which uses individual data points as the medoid or center of the cluster, making it less sensitive to outliers.
+
+\subsubsection{Hierarchical-based clustering}
+
+\par \textbf{Hierarchical clustering}, also known as \textbf{connectivity-based clustering}, groups data points based on their proximity and connectivity across all dimensions. It creates a \textbf{hierarchical graph network} of clusters at each hierarchical level, with each node having one parent node but multiple child nodes. These clusters can be visualized using a \textbf{dendrogram} to organize and summarize discovered clusters.
+
+There are two approaches to performing hierarchical cluster analysis: \textbf{agglomerative} and \textbf{divisive}. \textbf{Agglomerative clustering} starts with individual data points and merges clusters by computing the \textbf{proximity matrix} of all clusters at the current level of the hierarchy. The algorithm moves to the set of newly created clusters and repeats the process until there is one \textbf{root node} at the top of the hierarchical graph.
+
+\textbf{Divisive hierarchical clustering} methods partition data points into a \textbf{tree-like structure} using a \textbf{top-down approach}. The first step is to split the dataset into clusters using a \textbf{flat-clustering method} like \textbf{K-Means}. The clusters with the largest \textbf{Sum of Squared Errors (SSE)} are then partitioned further using a flat clustering method. The algorithm stops when it reaches individual nodes or some \textbf{minimum SSE}.
+
+\textbf{Divisive hierarchical clustering} allows greater flexibility in terms of the \textbf{hierarchical structure} and the level of balance in different clusters. It can be faster than \textbf{agglomerative hierarchical clustering}, especially when the data doesn't require constructing the tree all the way down to individual data points.
+
+\subsubsection{Distribution-based Clustering}
+
+\textbf{Distribution-based clustering}, also known as \textbf{probabilistic clustering}, is a \textbf{model-based approach} that groups data points based on their \textbf{probability distribution}. This approach assumes a process generating \textbf{normal distributions} for each dimension of the data, creating \textbf{cluster centers}. It differs from \textbf{centroid-based clustering} in that it doesn't use a \textbf{distance metric} like \textbf{Euclidean} or \textbf{Manhattan distance}. Instead, it looks for a well-defined \textbf{distribution} that appears across each dimension. The \textbf{cluster means} are the means of the \textbf{Gaussian distribution} across each dimension.
+
+One commonly used approach is the \textbf{Gaussian Mixture Model (GMM)} through \textbf{Expectation-Maximization}. This model assumes that each cluster is defined by a \textbf{Gaussian Distribution}, often called a \textbf{normal distribution}. For example, a dataset with two distinct clusters, A and B, defined by two different normal distributions, is considered. The GMM uses \textbf{Expectation-Maximization}, which starts with a random guess for the distributions along each axis and then improves iteratively by alternating two steps: 
+ \\\textbf{Expectation}: assigning each data point to each cluster and computing the probability that it came from \textbf{Cluster A} and \textbf{Cluster B}; 
+ \\\textbf{Maximization}: updating the parameters that define each cluster, a \textbf{weighted mean location}, and a \textbf{variance-covariance matrix} based on the likelihood of each data point being in the cluster.
+
+Even a given point may be \textbf{probabilistically associated} with multiple clusters, making it suitable for scenarios like \textbf{diverse language preferences}.
