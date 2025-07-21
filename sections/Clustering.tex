@@ -40,3 +40,8 @@ One commonly used approach is the \textbf{Gaussian Mixture Model (GMM)} through 
  \\\textbf{Maximization}: updating the parameters that define each cluster, a \textbf{weighted mean location}, and a \textbf{variance-covariance matrix} based on the likelihood of each data point being in the cluster.
 
 Even a given point may be \textbf{probabilistically associated} with multiple clusters, making it suitable for scenarios like \textbf{diverse language preferences}.
+
+\subsubsection{Density-based clustering}
+\textbf{DBSCAN} is a \textbf{clustering algorithm} that uses \textbf{density-based clustering} to detect clusters of any shape, size, or density in data. This approach is particularly useful when working with datasets with \textbf{noise} or \textbf{outliers} or when there is no prior knowledge about the \textbf{number of clusters} in the data. DBSCAN uses a \textbf{density-based spatial clustering} approach to create clusters with a \textbf{density} passed in by the user, centered around a \textbf{spatial centroid}. The area immediately around the centroid is referred to as a \textbf{neighborhood}, and DBSCAN attempts to define neighborhoods of clusters with the specified density. For each cluster, DBSCAN defines three types of data points: \textbf{core points}, \textbf{border points}, and \textbf{outliers}.
+
+A variant of DBSCAN, \textbf{HDBSCAN}, does not require any \textbf{parameters} to be set, making it even more flexible. HDBSCAN is less sensitive to \textbf{noise} and \textbf{outliers} in the data and can handle clusters of \textbf{varying density} more effectively. This is a primary motivation for HDBSCAN, which handles clusters of varying density more effectively than DBSCAN.
