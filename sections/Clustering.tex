@@ -45,3 +45,36 @@ Even a given point may be \textbf{probabilistically associated} with multiple cl
 \textbf{DBSCAN} is a \textbf{clustering algorithm} that uses \textbf{density-based clustering} to detect clusters of any shape, size, or density in data. This approach is particularly useful when working with datasets with \textbf{noise} or \textbf{outliers} or when there is no prior knowledge about the \textbf{number of clusters} in the data. DBSCAN uses a \textbf{density-based spatial clustering} approach to create clusters with a \textbf{density} passed in by the user, centered around a \textbf{spatial centroid}. The area immediately around the centroid is referred to as a \textbf{neighborhood}, and DBSCAN attempts to define neighborhoods of clusters with the specified density. For each cluster, DBSCAN defines three types of data points: \textbf{core points}, \textbf{border points}, and \textbf{outliers}.
 
 A variant of DBSCAN, \textbf{HDBSCAN}, does not require any \textbf{parameters} to be set, making it even more flexible. HDBSCAN is less sensitive to \textbf{noise} and \textbf{outliers} in the data and can handle clusters of \textbf{varying density} more effectively. This is a primary motivation for HDBSCAN, which handles clusters of varying density more effectively than DBSCAN.
+
+\subsection{DBSCAN}
+
+\par As mentioned earlier, DBSCAN is a density based clustering algorithm that divides your entire dataset into dense regions separated by sparse regions.
+
+\subsubsection{Advantages of DBSCAN}
+
+\par \textbf{Robust to outliers :} It is robust to outliers as it defines clusters based on dense regions of data, and isolated points are treated as noise.
+
+\par \textbf{No need to specify clusters : } Unlike some clustering algorithms, DBSCAN does not require the user to specify the number of clusters beforehand, making it more flexible and applicable to a variety of datasets.
+
+\par \textbf{No need to specify clusters : }DBSCAN can identify clusters with complex shapes and is not constrained by assumptions of cluster shapes, making it suitable for data with irregular structures.
+
+\par \textbf{Only 2 hyperparameters to tune : } DBSCAN has only two primary hyperparameters to tune: “eps” (distance threshold for defining neighborhood) and “min-samples” (minimum number of points required to form a dense region). This simplicity can make parameter tuning more straightforward.
+
+\subsubsection{Disadvantages of DBSCAN}
+
+
+\textbf{Sensitivity to hyperparameters : } The performance of DBSCAN can be sensitive to the choice of its hyperparameters, especially the distance threshold (eps) and the minimum number of points (min-samples). Suboptimal parameter selection may lead to under-segmentation or over-segmentation.
+
+\textbf{Difficulty with varying density clusters : }DBSCAN struggles with clusters of varying densities. It may fail to connect regions with lower point density to the rest of the cluster, leading to suboptimal cluster assignments in datasets with regions of varying densities.
+
+\textbf{Does not predict : } Unlike some clustering algorithms, DBSCAN does not predict the cluster membership of new, unseen data points. Once the model is trained, it is applied to the existing dataset without the ability to generalize to new observations outside the training set.
+
+
+\subsubsection{Comparison with K-means}
+
+\begin{figure}[H] % Forces figure placement "Here"
+	\centering
+	\includegraphics[width=0.7\linewidth]{../Kmeansvsclustering}
+	\caption{Comparison between K-means clustering and other clustering methods.}
+	\label{fig:Kmeansvsclustering}
+\end{figure}
