@@ -326,3 +326,4 @@ TSWLatexianTemp*
 #*Notes.bib
 .idea
 *.pdf
+.DS_Store
