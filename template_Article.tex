@@ -10,6 +10,23 @@
 \usepackage{float}
 \onehalfspacing % Optional: 1.5 line spacing
 
+\usepackage{lipsum} 
+\usepackage{etoolbox}
+\renewenvironment{abstract}{
+	\cleardoublepage
+	\thispagestyle{plain}
+	\null\vfill
+	\begin{center}
+		\bfseries\large\textit{Abstract}
+	\end{center}
+	\vspace{1em}
+	\begin{quote}
+		\itshape
+	}{
+	\end{quote}
+	\vfill\null
+	\newpage
+}
 
 \graphicspath{{./img/}{./pictures/}}
 
