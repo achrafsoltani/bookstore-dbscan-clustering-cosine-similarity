@@ -1,17 +1,20 @@
 \subsection{What is Clustering?}
 \date{}
 
-	
-	\maketitle
-	
-	Suppose you are working with a dataset that includes patient information from a healthcare system. The dataset is complex and includes both categorical and numeric features. You want to find patterns and similarities in the dataset. How might you approach this task?
+
+\maketitle
+
+Suppose you are working with a dataset that includes patient information from a healthcare system. The dataset is complex and includes both categorical and numeric features. You want to find patterns and similarities in the dataset. How might you approach this task?
+
+\begin{center}
+	\includegraphics[width=1\textwidth]{one}  % Adjust 0.7 to what fits best
+\end{center}
 
 
-	\includegraphics{one}   %picture named one in directory img
-	\includegraphics{dice}
-	
-	\par Clustering is an \textbf{unsupervised machine learning} technique designed to group unlabeled examples based on their similarity to each other. (If the examples are labeled, this kind of grouping is called \emph{classification}.) Consider a hypothetical patient study designed to evaluate a new treatment protocol. During the study, patients report how many times per week they experience symptoms and the severity of the symptoms. Researchers can use clustering analysis to group patients with similar treatment responses into clusters.The figure demonstrates one possible grouping of simulated data into three clusters.
-	
+
+
+\par Clustering is an \textbf{unsupervised machine learning} technique designed to group unlabeled examples based on their similarity to each other. (If the examples are labeled, this kind of grouping is called \emph{classification}.) Consider a hypothetical patient study designed to evaluate a new treatment protocol. During the study, patients report how many times per week they experience symptoms and the severity of the symptoms. Researchers can use clustering analysis to group patients with similar treatment responses into clusters.The figure demonstrates one possible grouping of simulated data into three clusters.
+
 \subsection{Types of clustering}
 
 \par There are many different \textbf{clustering} algorithms as there are multiple ways to define a cluster. Different approaches will work well for different types of models depending on the size of the input data, the dimensionality of the data, the rigidity of the categories and the number of clusters within the dataset.
@@ -34,8 +37,8 @@ There are two approaches to performing hierarchical cluster analysis: \textbf{ag
 \textbf{Distribution-based clustering}, also known as \textbf{probabilistic clustering}, is a \textbf{model-based approach} that groups data points based on their \textbf{probability distribution}. This approach assumes a process generating \textbf{normal distributions} for each dimension of the data, creating \textbf{cluster centers}. It differs from \textbf{centroid-based clustering} in that it doesn't use a \textbf{distance metric} like \textbf{Euclidean} or \textbf{Manhattan distance}. Instead, it looks for a well-defined \textbf{distribution} that appears across each dimension. The \textbf{cluster means} are the means of the \textbf{Gaussian distribution} across each dimension.
 
 One commonly used approach is the \textbf{Gaussian Mixture Model (GMM)} through \textbf{Expectation-Maximization}. This model assumes that each cluster is defined by a \textbf{Gaussian Distribution}, often called a \textbf{normal distribution}. For example, a dataset with two distinct clusters, A and B, defined by two different normal distributions, is considered. The GMM uses \textbf{Expectation-Maximization}, which starts with a random guess for the distributions along each axis and then improves iteratively by alternating two steps: 
- \\\textbf{Expectation}: assigning each data point to each cluster and computing the probability that it came from \textbf{Cluster A} and \textbf{Cluster B}; 
- \\\textbf{Maximization}: updating the parameters that define each cluster, a \textbf{weighted mean location}, and a \textbf{variance-covariance matrix} based on the likelihood of each data point being in the cluster.
+\\\textbf{Expectation}: assigning each data point to each cluster and computing the probability that it came from \textbf{Cluster A} and \textbf{Cluster B}; 
+\\\textbf{Maximization}: updating the parameters that define each cluster, a \textbf{weighted mean location}, and a \textbf{variance-covariance matrix} based on the likelihood of each data point being in the cluster.
 
 Even a given point may be \textbf{probabilistically associated} with multiple clusters, making it suitable for scenarios like \textbf{diverse language preferences}.
 
@@ -67,7 +70,7 @@ A variant of DBSCAN, \textbf{HDBSCAN}, does not require any \textbf{parameters} 
 
 \textbf{Does not predict : } Unlike some clustering algorithms, DBSCAN does not predict the cluster membership of new, unseen data points. Once the model is trained, it is applied to the existing dataset without the ability to generalize to new observations outside the training set.
 
-
+\begin{center}
+	\includegraphics[width=1\textwidth]{two}  % Adjust 0.7 to what fits best
+\end{center}
 \subsubsection{Comparison with K-means}
-
-
