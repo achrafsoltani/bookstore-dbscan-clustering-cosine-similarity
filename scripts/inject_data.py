@@ -1,15 +1,13 @@
-
-import os, json, getpass
+import os, json, getpass, time
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
-
 import psycopg2
 from psycopg2.extras import Json
 
 # ---- config ----
-JSONL_PATH = "split_files/split_1.jsonl"
-DB_NAME = "RecommanderSys"
-DB_USER = "postgres"
+JSONL_PATH = "split_files/isbndb_2022_09.jsonl"
+DB_NAME = "postgres"
+DB_USER = "root"
 DB_HOST = "127.0.0.1"
 DB_PORT = 5432
 BATCH_COMMIT = 1000
@@ -17,7 +15,7 @@ MAX_ERRORS = 200
 # ----------------
 
 def get_password():
-    pw = os.environ.get("PGPASSWORD")
+    pw = "toor"#os.environ.get("PGPASSWORD")
     return pw if pw else getpass.getpass(f"Postgres password for user '{DB_USER}': ")
 
 def parse_pages(val):
@@ -134,6 +132,7 @@ def upsert_typed(cur, doc):
     ))
 
 def main():
+    time_start = time.time()
     conn = psycopg2.connect(
         dbname=DB_NAME,
         user=DB_USER,
@@ -175,6 +174,7 @@ def main():
                 continue
 
             try:
+                print(f"Trying [Line {line_no}]")
                 upsert_raw(cur, doc)
                 upsert_typed(cur, doc)
                 batch += 1; ok += 1
@@ -193,7 +193,10 @@ def main():
 
     cur.close()
     conn.close()
-    print(f"Done. Total: {total}, Upserted: {ok}, Skipped: {skipped}, Errors: {errors}")
+    time_end = time.time()
+    dt_local = datetime.fromtimestamp(time_end - time_start)
+    formatted_date = dt_local.strftime("%H:%M:%S")
+    print(f"Done in {formatted_date}. Total: {total}, Upserted: {ok}, Skipped: {skipped}, Errors: {errors}")
 
 if __name__ == "__main__":
     main()
