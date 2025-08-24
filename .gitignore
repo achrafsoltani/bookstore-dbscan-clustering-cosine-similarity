@@ -327,3 +327,6 @@ TSWLatexianTemp*
 .idea
 *.pdf
 .DS_Store
+
+*.jsonl
+.venv
